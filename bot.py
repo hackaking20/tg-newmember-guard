@@ -1,56 +1,23 @@
 #!/usr/bin/env python3
-"""
-Telegram New-Member Guard Bot
-=============================
-Strict-quarantine moderation bot for Telegram groups.
+"""Telegram New-Member Guard Bot â€” handlers and entrypoint.
 
-What it does
-------------
-1.  ACCOUNT-AGE GATE: Telegram does not expose account creation dates to bots,
-    so we estimate a user's account age from their numeric user ID (IDs are
-    handed out roughly chronologically). Accounts estimated younger than
-    MIN_ACCOUNT_AGE_DAYS are treated as "new/suspicious".
-
-2.  QUARANTINE: Suspicious accounts are muted the moment they join (and any
-    message they still manage to send is deleted and *held*). Admins get a
-    notification with inline buttons:
-        [Approve]  -> unmutes; held messages are re-posted
-        [Mute]     -> keeps them silenced indefinitely
-        [Ban]      -> removes them from the group
-
-3.  TRUST BY ACTIVITY: members who have already sent TRUST_AFTER_MESSAGES
-    clean messages are never quarantined (existing members are left alone).
-
-4.  OPTIONAL BIO CHECK: the Bot API cannot read user bios. A companion
-    userbot script (bio_guard.py, Telethon-based) watches joins, scans the
-    new member's bio for spam links, and if found mutes them + notifies the
-    admin chat via this bot's token. Run it on your own account; see README.
-
-Setup (env vars / .env file)
-----------------------------
-BOT_TOKEN        (required) token from @BotFather
-ADMIN_CHAT_ID    (required) chat where notifications/buttons go (your admin group or your own user id)
-ADMIN_IDS        (optional) comma-separated admin user ids allowed to use commands
-GROUP_ID         (optional) if set, the bot only moderates that chat
-MIN_ACCOUNT_AGE_DAYS  (default 30) accounts estimated younger than this are quarantined
-TRUST_AFTER_MESSAGES  (default 10)  messages before a member is auto-trusted
-AUTO_PASS_OLD_ACCOUNTS (default 1)  legit-looking old accounts skip quarantine
-REPOST_HELD      (default 1)        re-post held messages to the group after approval
-DB_PATH          (default guard.db)
+Config, age estimation, storage and core decision logic live in bot_core.py.
+See bot_core.py's docstring for environment variables.
 """
 
-from __future__ import annotations
+from bot_core import (
+    BOT_TOKEN, ADMIN_CHAT_ID, ADMIN_IDS, GROUP_ID,
+    MIN_ACCOUNT_AGE_DAYS, TRUST_AFTER_MESSAGES, AUTO_PASS_OLD_ACCOUNTS,
+    REPOST_HELD, DB_PATH,
+    estimate_account_age_days, classify_new_user,
+    db, init_db, get_user, upsert_user, set_status,
+    bump_message_count, hold_message, held_for, clear_held, should_notify,
+    log, MUTE_PERMS, UNMUTE_PERMS, describe_user, admin_buttons, is_admin,
+    safe_delete, quarantine, approve,
+)
 
-import asyncio
-import logging
-import os
-import re
-import sqlite3
-import time
-from datetime import date, datetime, timezone
-
-from telegram import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.error import BadRequest, Forbidden, TelegramError
+from telegram import Update
+from telegram.error import TelegramError
 from telegram.ext import (
     Application,
     CallbackQueryHandler,
@@ -61,181 +28,253 @@ from telegram.ext import (
 )
 
 # --------------------------------------------------------------------------
-# Config
+# Handlers
 # --------------------------------------------------------------------------
 
-def _env(name: str, default: str = "") -> str:
-    return os.environ.get(name, default)
+async def on_join(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """chat_member updates fire when someone joins/leaves - the reliable join signal."""
+    cm = update.chat_member
+    if cm is None:
+        return
+    chat = update.effective_chat
+    if GROUP_ID and chat.id != GROUP_ID:
+        return
+    old, new = cm.old_chat_member, cm.new_chat_member
+    if new.status != "member" or old.status in ("member", "administrator", "creator", "restricted"):
+        return  # not a fresh join
+    user = new.user
+    status, est_days, confidence, spammy = classify_new_user(user)
+    if status == "approved":
+        upsert_user(user.id, user.username, user.first_name)
+        set_status(user.id, "approved")
+        log.info("auto-passed old account %s (~%d days)", user.id, est_days)
+        return
+    reason = "New account (estimated age below threshold)"
+    if spammy:
+        reason += " + spammy username pattern"
+    await quarantine(user, chat, context, reason, est_days, confidence)
 
-def _env_bool(name: str, default: bool) -> bool:
-    v = os.environ.get(name)
-    if v is None:
-        return default
-    return v.strip().lower() not in ("0", "false", "no", "off")
+async def on_new_chat_members(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Fallback join signal (service message) for setups without chat_member updates."""
+    msg = update.effective_message
+    chat = update.effective_chat
+    if not msg or not chat:
+        return
+    if GROUP_ID and chat.id != GROUP_ID:
+        return
+    for user in msg.new_chat_members:
+        if user.is_bot:
+            continue
+        existing = get_user(user.id)
+        if existing and existing["status"] in ("approved", "banned"):
+            continue
+        status, est_days, confidence, spammy = classify_new_user(user)
+        if status == "approved":
+            upsert_user(user.id, user.username, user.first_name)
+            set_status(user.id, "approved")
+            continue
+        reason = "New account (estimated age below threshold)"
+        if spammy:
+            reason += " + spammy username pattern"
+        await quarantine(user, chat, context, reason, est_days, confidence)
 
-def _env_int(name: str, default: int) -> int:
+async def on_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    msg = update.effective_message
+    if not msg or not msg.from_user:
+        return
+    chat = update.effective_chat
+    if chat is None or chat.type not in ("group", "supergroup"):
+        return
+    if GROUP_ID and chat.id != GROUP_ID:
+        return
+    user = msg.from_user
+    if user.is_bot or msg.sender_chat is not None:  # bots + anonymous/channel posts pass
+        return
+
+    row = get_user(user.id)
+    if row is None:
+        row = upsert_user(user.id, user.username, user.first_name)
+        # First time we see this user: apply the account-age gate.
+        status, est_days, confidence, spammy = classify_new_user(user)
+        if status == "approved":
+            set_status(user.id, "approved")
+            bump_message_count(user.id)
+            return
+        await quarantine(user, chat, context, "Young account seen messaging (joined before bot?)", est_days, confidence)
+        # fall through: their message gets held below
+
+    status = row["status"]
+    if status == "banned":
+        await safe_delete(msg)
+        return
+    if status == "approved":
+        bump_message_count(user.id)
+        return
+
+    # quarantined or new-but-not-yet-classified: hold the message
+    count = bump_message_count(user.id)
+    if status == "quarantined":
+        await safe_delete(msg)
+        text = msg.text or msg.caption or f"[non-text message: {msg.effective_attachment.__class__.__name__}]"
+        hold_message(user.id, chat.id, msg.message_id, text)
+        if should_notify(user.id):
+            held = held_for(user.id)
+            try:
+                await context.bot.send_message(
+                    ADMIN_CHAT_ID,
+                    f"HELD (quarantined) {describe_user(user)} in `{chat.id}`\n"
+                    f"Latest: {text[:300]}\nTotal held: {len(held)}\n"
+                    f"Use /approve {user.id} or the buttons on the earlier notification.",
+                    disable_web_page_preview=True,
+                    reply_markup=admin_buttons(user.id, chat.id),
+                )
+            except TelegramError as e:
+                log.error("admin notify failed: %s", e)
+        # auto-trust after enough clean messages? NO: quarantined users stay held.
+
+async def on_button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    q = update.callback_query
+    if not q or not is_admin(update):
+        if q:
+            await q.answer("Admins only.", show_alert=True)
+        return
+    await q.answer()
     try:
-        return int(os.environ.get(name, default))
-    except (TypeError, ValueError):
-        return default
+        _, action, user_id_s, chat_id_s = (q.data or "").split(":")
+        user_id, chat_id = int(user_id_s), int(chat_id_s)
+    except (ValueError, AttributeError):
+        return
+    if action == "approve":
+        result = await approve(user_id, chat_id, context, approver=q.from_user.first_name)
+    elif action == "mute":
+        set_status(user_id, "quarantined")
+        try:
+            await context.bot.restrict_chat_member(chat_id, user_id, permissions=MUTE_PERMS)
+            result = f"Muted user {user_id} indefinitely."
+        except TelegramError as e:
+            result = f"Mute failed: {e}"
+    elif action == "ban":
+        set_status(user_id, "banned")
+        clear_held(user_id)
+        try:
+            await context.bot.ban_chat_member(chat_id, user_id)
+            result = f"Banned user {user_id}."
+        except TelegramError as e:
+            result = f"Ban failed: {e} (is the bot admin with ban rights?)"
+    else:
+        return
+    try:
+        await context.bot.send_message(ADMIN_CHAT_ID, result)
+    except TelegramError:
+        pass
 
-BOT_TOKEN = _env("BOT_TOKEN")
-ADMIN_CHAT_ID = _env_int("ADMIN_CHAT_ID", 0)
-ADMIN_IDS = {int(x) for x in _env("ADMIN_IDS").replace(" ", "").split(",") if x}
-GROUP_ID = _env_int("GROUP_ID", 0)  # 0 = moderate every group the bot is in
-MIN_ACCOUNT_AGE_DAYS = _env_int("MIN_ACCOUNT_AGE_DAYS", 30)
-TRUST_AFTER_MESSAGES = _env_int("TRUST_AFTER_MESSAGES", 10)
-AUTO_PASS_OLD_ACCOUNTS = _env_bool("AUTO_PASS_OLD_ACCOUNTS", True)
-REPOST_HELD = _env_bool("REPOST_HELD", True)
-DB_PATH = _env("DB_PATH", "guard.db")
+def _target_user_id(update: Update, arg: str | None) -> int | None:
+    if arg and arg.lstrip("-").isdigit():
+        return int(arg)
+    reply = update.effective_message.reply_to_message if update.effective_message else None
+    if reply and reply.from_user:
+        return reply.from_user.id
+    return None
 
-NOTIFY_COOLDOWN_SEC = 600  # re-notify admins about the same quarantined user at most every 10 min
+async def cmd_approve(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_admin(update):
+        return
+    uid = _target_user_id(update, " ".join(context.args or []))
+    if uid is None:
+        await update.effective_message.reply_text("Usage: /approve <user_id> (or reply to their message)")
+        return
+    chat_id = GROUP_ID or (update.effective_chat.id if update.effective_chat else 0)
+    await update.effective_message.reply_text(await approve(uid, chat_id, context, approver=update.effective_user.first_name))
 
-if not BOT_TOKEN or not ADMIN_CHAT_ID:
-    raise SystemExit("BOT_TOKEN and ADMIN_CHAT_ID must be set (see .env.example).")
+async def cmd_ban(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_admin(update):
+        return
+    uid = _target_user_id(update, " ".join(context.args or []))
+    if uid is None:
+        await update.effective_message.reply_text("Usage: /ban <user_id> (or reply to their message)")
+        return
+    set_status(uid, "banned")
+    clear_held(uid)
+    chat_id = GROUP_ID or (update.effective_chat.id if update.effective_chat else 0)
+    try:
+        await context.bot.ban_chat_member(chat_id, uid)
+        await update.effective_message.reply_text(f"Banned {uid}.")
+    except TelegramError as e:
+        await update.effective_message.reply_text(f"Ban failed: {e}")
+
+async def cmd_check(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_admin(update):
+        return
+    uid = _target_user_id(update, " ".join(context.args or []))
+    if uid is None:
+        await update.effective_message.reply_text("Usage: /check <user_id>")
+        return
+    days, conf = estimate_account_age_days(uid)
+    row = get_user(uid)
+    state = row["status"] if row else "unknown"
+    held = len(held_for(uid))
+    await update.effective_message.reply_text(
+        f"User `{uid}`\nEstimated account age: ~{days} days ({conf})\n"
+        f"Bot status: {state}\nHeld messages: {held}"
+    )
+
+async def cmd_status(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_admin(update):
+        return
+    with db() as c:
+        stats = {r["status"]: r["n"] for r in c.execute("SELECT status, COUNT(*) n FROM users GROUP BY status")}
+        held = c.execute("SELECT COUNT(*) n FROM held_messages").fetchone()["n"]
+    await update.effective_message.reply_text(
+        f"Users: {dict(stats) or 'none yet'}\nHeld messages: {held}"
+    )
+
+async def cmd_held(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_admin(update):
+        return
+    uid = _target_user_id(update, " ".join(context.args or []))
+    if uid is None:
+        await update.effective_message.reply_text("Usage: /held <user_id>")
+        return
+    rows = held_for(uid)
+    if not rows:
+        await update.effective_message.reply_text("No held messages for that user.")
+        return
+    out = "\n---\n".join(r["text"][:500] for r in rows[:10])
+    await update.effective_message.reply_text(f"Held for `{uid}` ({len(rows)}):\n{out}", disable_web_page_preview=True)
 
 # --------------------------------------------------------------------------
-# Account-age estimation from user ID
-# --------------------------------------------------------------------------
-# APPROXIMATE anchors: (user_id, approximate creation date).
-# Telegram IDs are issued roughly chronologically. These anchors are rough
-# public estimates - calibrate them for your group with /check on users whose
-# join date you actually know, then edit this table.
-ACCOUNT_AGE_ANCHORS: list[tuple[int, date]] = [
-    (100_000_000, date(2013, 5, 1)),
-    (500_000_000, date(2014, 10, 1)),
-    (1_000_000_000, date(2016, 3, 1)),
-    (2_000_000_000, date(2017, 11, 1)),
-    (5_000_000_000, date(2019, 10, 1)),
-    (7_500_000_000, date(2020, 10, 1)),
-    (10_000_000_000, date(2021, 6, 1)),
-    (15_000_000_000, date(2022, 6, 1)),
-    (20_000_000_000, date(2022, 12, 1)),
-    (55_000_000_000, date(2023, 6, 1)),
-    (65_000_000_000, date(2024, 3, 1)),
-    (73_000_000_000, date(2024, 12, 1)),
-    (78_000_000_000, date(2025, 12, 1)),
-]
-
-def estimate_account_age_days(user_id: int) -> tuple[int, str]:
-    """Return (estimated_age_in_days, confidence) from the user ID.
-    Confidence is 'exact-anchor', 'interpolated' or 'extrapolated' (beyond the
-    last anchor - treat with care and recalibrate the anchors)."""
-    today = datetime.now(timezone.utc).date()
-    if user_id <= 0:
-        return 10_000, "interpolated"
-    if user_id <= ACCOUNT_AGE_ANCHORS[0][0]:
-        return (today - ACCOUNT_AGE_ANCHORS[0][1]).days, "interpolated"
-    for (id_a, d_a), (id_b, d_b) in zip(ACCOUNT_AGE_ANCHORS, ACCOUNT_AGE_ANCHORS[1:]):
-        if id_a <= user_id <= id_b:
-            frac = (user_id - id_a) / (id_b - id_a)
-            est = d_a + (d_b - d_a) * frac
-            return (today - est).days, "interpolated"
-    # beyond the last anchor: extrapolate with the slope of the last segment
-    (id_a, d_a), (id_b, d_b) = ACCTõnt_AGE_ANCHORS[-2], ACCOUNT_AGE_ANCHORS[-1]
-    ids_per_day = (id_b - id_a) / max((d_b - d_a).days, 1)
-    from datetime import timedelta
-    est = d_b + timedelta(days=(user_id - id_b) / ids_per_day)
-    return (today - est).days, "extrapolated"
-
-# Cheap username spam signal (used only as a tiebreaker, never as sole reason)
-SPAMMY_USERNAME_RE = re.compile(r"(casino|promo|crypto|earn|whatsapp|channel|admin)", re.I)
-
-# --------------------------------------------------------------------------
-# Storage
+# Main
 # --------------------------------------------------------------------------
 
-def db() -> sqlite3.Connection:
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
-
-def init_db() -> None:
-    with db() as c:
-        c.execute(
-            """CREATE TABLE IF NOT EXISTS users (
-                user_id INTEGER PRIMARY KEY,
-                username TEXT,
-                first_name TEXT,
-                first_seen_at INTEGER,
-                message_count INTEGER DEFAULT 0,
-                status TEXT DEFAULT 'new',          -- new|quarantined|approved|banned
-                approved_at INTEGER
-            )"""
+async def post_init(application: Application) -> None:
+    me = await application.bot.get_me()
+    log.info("Logged in as @%s", me.username)
+    try:
+        await application.bot.send_message(
+            ADMIN_CHAT_ID, "New-member guard bot is online. Make sure I am an ADMIN in the group with:\n- Delete messages\n- Restrict/ban members\nPrivacy mode is irrelevant for admins; I see all messages."
         )
-        c.execute(
-            """CREATE TABLE IF NOT EXISTS held_messages (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER,
-                chat_id INTEGER,
-                message_id INTEGER,
-                text TEXT,
-                captured_at INTEGER
-            )"""
-        )
-        c.execute("CREATE TABLE IF NOT EXISTS notify_state (user_id INTEGER PRIMARY KEY, last_notify INTEGER)")
+    except TelegramError as e:
+        log.error("Could not message ADMIN_CHAT_ID (%s). Double-check the id.", e)
 
-def get_user(user_id: int) -> sqlite3.Row | None:
-    with db() as c:
-        return c.execute("SELECT * FROM users WHERE user_id = ?", (user_id,)).fetchone()
+def main() -> None:
+    logging.basicConfig(
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s", level=logging.INFO
+    )
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    init_db()
 
-def upsert_user(user_id: int, username: str | None, first_name: str | None) -> sqlite3.Row:
-    with db() as c:
-        c.execute(
-            """INSERT INTO users (user_id, username, first_name, first_seen_at)
-               VALUES (?, ?, ?, ?)
-               ON CONFLICT(user_id) DO UPDATE SET
-                 username = COALESCE(excluded.username, username),
-                 first_name = COALESCE(excluded.first_name, first_name)""",
-            (user_id, username, first_name, int(time.time())),
-        )
-        return c.execute("SELECT * FROM users WHERE user_id = ?", (user_id,)).fetchone()
+    app = Application.builder().token(BOT_TOKEN).post_init(post_init).build()
 
-def set_status(user_id: int, status: str) -> None:
-    with db() as c:
-        c.execute(
-            "UPDATE users SET status = ?, approved_at = ? WHERE user_id = ?",
-            (status, int(time.time()) if status == "approved" else None, user_id),
-        )
+    app.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, on_new_chat_members))
+    app.add_handler(MessageHandler(filters.ChatType.GROUPS & ~filters.COMMAND, on_message))
+    app.add_handler(CommandHandler("approve", cmd_approve, filters.ChatType.PRIVATE | filters.ChatType.GROUPS))
+    app.add_handler(CommandHandler("ban", cmd_ban, filters.ChatType.PRIVATE | filters.ChatType.GROUPS))
+    app.add_handler(CommandHandler("check", cmd_check, filters.ChatType.PRIVATE | filters.ChatType.GROUPS))
+    app.add_handler(CommandHandler("status", cmd_status, filters.ChatType.PRIVATE | filters.ChatType.GROUPS))
+    app.add_handler(CommandHandler("held", cmd_held, filters.ChatType.PRIVATE | filters.ChatType.GROUPS))
+    app.add_handler(CallbackQueryHandler(on_button, pattern=r"^act:"))
+    # chat_member updates must be requested explicitly or join tracking won't fire
+    app.run_polling(allowed_updates=["message", "chat_member", "callback_query"])
 
-def bump_message_count(user_id: int) -> int:
-    with db() as c:
-        c.execute("UPDATE users SET message_count = message_count + 1 WHERE user_id = ?", (user_id,))
-        row = c.execute("SELECT message_count FROM users WHERE user_id = ?", (user_id,)).fetchone()
-        return row["message_count"] if row else 0
-
-def hold_message(user_id: int, chat_id: int, message_id: int, text: str) -> None:
-    with db() as c:
-        c.execute(
-            "INSERT INTO held_messages (user_id, chat_id, message_id, text, captured_at) VALUES (?, ?, ?, ?, ?)",
-            (user_id, chat_id, message_id, text[:3500], int(time.time())),
-        )
-
-def held_for(user_id: int) -> list[sqlite3.Row]:
-    with db() as c:
-        return c.execute(
-            "SELECT * FROM held_messages WHERE user_id = ? ORDER BY id", (user_id,)
-        ).fetchall()
-
-def clear_held(user_id: int) -> None:
-    with db() as c:
-        c.execute("DELETE FROM held_messages WHERE user_id = ?", (user_id,))
-
-def should_notify(user_id: int) -> bool:
-    now = int(time.time())
-    with db() as c:
-        row = c.execute("SELECT last_notify FROM notify_state WHERE user_id = ?", (user_id,)).fetchone()
-        if row and now - row["last_notify"] < NOTIFY_COOLDOWN_SEC:
-            return False
-        c.execute(
-            "INSERT INTO notify_state (user_id, last_notify) VALUES (?, ?) "
-            "ON CONFLICT(user_id) DO UPDATE SET last_notify = ?",
-            (user_id, now, now),
-        )
-        return True
-
-# --------------------------------------------------------------------------
-# Helpers
-# -------------------------------------------------------------------------
-
-[remainder of bot.py content for brevity]
+if __name__ == "__main__":
+    main()
