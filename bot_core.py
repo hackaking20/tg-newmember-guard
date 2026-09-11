@@ -1,1 +1,295 @@
-IiIiQ29yZSBtb2R1bGU6IGNvbmZpZywgYWNjb3VudC1hZ2UgZXN0aW1hdGlvbiwgU1FMaXRlIHN0b3JhZ2UsIGhlbHBlcnMuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXN5bmNpbwppbXBvcnQgbG9nZ2luZwppbXBvcnQgb3MKaW1wb3J0IHJlCmltcG9ydCBzcWxpdGUzCmltcG9ydCB0aW1lCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGUsIGRhdGV0aW1lLCB0aW1lem9uZQoKZnJvbSB0ZWxlZ3JhbSBpbXBvcnQgQ2hhdFBlcm1pc3Npb25zLCBJbmxpbmVLZXlib2FyZEJ1dHRvbiwgSW5saW5lS2V5Ym9hcmRNYXJrdXAsIFVwZGF0ZQpmcm9tIHRlbGVncmFtLmVycm9yIGltcG9ydCBCYWRSZXF1ZXN0LCBGb3JiaWRkZW4sIFRlbGVncmFtRXJyb3IKZnJvbSB0ZWxlZ3JhbS5leHQgaW1wb3J0ICgKICAgIEFwcGxpY2F0aW9uLAogICAgQ2FsbGJhY2tRdWVyeUhhbmRsZXIsCiAgICBDb21tYW5kSGFuZGxlciwKICAgIENvbnRleHRUeXBlcywKICAgIE1lc3NhZ2VIYW5kbGVyLAogICAgZmlsdGVycywKKQoKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQojIENvbmZpZwojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgpkZWYgX2VudihuYW1lOiBzdHIsIGRlZmF1bHQ6IHN0ciA9ICIiKSAtPiBzdHI6CiAgICByZXR1cm4gb3MuZW52aXJvbi5nZXQobmFtZSwgZGVmYXVsdCkKCmRlZiBfZW52X2Jvb2wobmFtZTogc3RyLCBkZWZhdWx0OiBib29sKSAtPiBib29sOgogICAgdiA9IG9zLmVudmlyb24uZ2V0KG5hbWUpCiAgICBpZiB2IGlzIE5vbmU6CiAgICAgICAgcmV0dXJuIGRlZmF1bHQKICAgIHJldHVybiB2LnN0cmlwKCkubG93ZXIoKSBub3QgaW4gKCIwIiwgImZhbHNlIiwgIm5vIiwgIm9mZiIpCgpkZWYgX2Vudl9pbnQobmFtZTogc3RyLCBkZWZhdWx0OiBpbnQpIC0+IGludDoKICAgIHRyeToKICAgICAgICByZXR1cm4gaW50KG9zLmVudmlyb24uZ2V0KG5hbWUsIGRlZmF1bHQpKQogICAgZXhjZXB0IChUeXBlRXJyb3IsIFZhbHVlRXJyb3IpOgogICAgICAgIHJldHVybiBkZWZhdWx0CgpCT1RfVE9LRU4gPSBfZW52KCJCT1RfVE9LRU4iKQpBRE1JTl9DSEFUX0lEID0gX2Vudl9pbnQoIkFETUlOX0NIQVRfSUQiLCAwKQpBRE1JTl9JRFMgPSB7aW50KHgpIGZvciB4IGluIF9lbnYoIkFETUlOX0lEUyIpLnJlcGxhY2UoIiAiLCAiIikuc3BsaXQoIiwiKSBpZiB4fQpHUk9VUF9JRCA9IF9lbnZfaW50KCJHUk9VUF9JRCIsIDApICAjIDAgPSBtb2RlcmF0ZSBldmVyeSBncm91cCB0aGUgYm90IGlzIGluCk1JTl9BQ0NPVU5UX0FHRV9EQVlTID0gX2Vudl9pbnQoIk1JTl9BQ0NPVU5UX0FHRV9EQVlTIiwgMzApClRSVVNUX0FGVEVSX01FU1NBR0VTID0gX2Vudl9pbnQoIlRSVVNUX0FGVEVSX01FU1NBR0VTIiwgMTApCkFVVE9fUEFTU19PTERfQUNDT1VOVFMgPSBfZW52X2Jvb2woIkFVVE9fUEFTU19PTERfQUNDT1VOVFMiLCBUcnVlKQpSRVBPU1RfSEVMRCA9IF9lbnZfYm9vbCgiUkVQT1NUX0hFTEQiLCBUcnVlKQpEQl9QQVRIID0gX2VudigiREJfUEFUSCIsICJndWFyZC5kYiIpCgpOT1RJRllfQ09PTERPV05fU0VDID0gNjAwICAjIHJlLW5vdGlmeSBhZG1pbnMgYWJvdXQgdGhlIHNhbWUgcXVhcmFudGluZWQgdXNlciBhdCBtb3N0IGV2ZXJ5IDEwIG1pbgoKaWYgbm90IEJPVF9UT0tFTiBvciBub3QgQURNSU5fQ0hBVF9JRDoKICAgIHJhaXNlIFN5c3RlbUV4aXQoIkJPVF9UT0tFTiBhbmQgQURNSU5fQ0hBVF9JRCBtdXN0IGJlIHNldCAoc2VlIC5lbnYuZXhhbXBsZSkuIikKCiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KIyBBY2NvdW50LWFnZSBlc3RpbWF0aW9uIGZyb20gdXNlciBJRAojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiMgQVBQUk9YSU1BVEUgYW5jaG9yczogKHVzZXJfaWQsIGFwcHJveGltYXRlIGNyZWF0aW9uIGRhdGUpLgojIFRlbGVncmFtIElEcyBhcmUgaXNzdWVkIHJvdWdobHkgY2hyb25vbG9naWNhbGx5LiBUaGVzZSBhbmNob3JzIGFyZSByb3VnaAojIHB1YmxpYyBlc3RpbWF0ZXMgLSBjYWxpYnJhdGUgdGhlbSBmb3IgeW91ciBncm91cCB3aXRoIC9jaGVjayBvbiB1c2VycyB3aG9zZQojIGpvaW4gZGF0ZSB5b3UgYWN0dWFsbHkga25vdywgdGhlbiBlZGl0IHRoaXMgdGFibGUuCkFDQ09VTlRfQUdFX0FOQ0hPUlM6IGxpc3RbdHVwbGVbaW50LCBkYXRlXV0gPSBbCiAgICAoMTAwXzAwMF8wMDAsIGRhdGUoMjAxMywgNSwgMSkpLAogICAgKDUwMF8wMDBfMDAwLCBkYXRlKDIwMTQsIDEwLCAxKSksCiAgICAoMV8wMDBfMDAwXzAwMCwgZGF0ZSgyMDE2LCAzLCAxKSksCiAgICAoMl8wMDBfMDAwXzAwMCwgZGF0ZSgyMDE3LCAxMSwgMSkpLAogICAgKDVfMDAwXzAwMF8wMDAsIGRhdGUoMjAxOSwgMTAsIDEpKSwKICAgICg3XzUwMF8wMDBfMDAwLCBkYXRlKDIwMjAsIDEwLCAxKSksCiAgICAoMTBfMDAwXzAwMF8wMDAsIGRhdGUoMjAyMSwgNiwgMSkpLAogICAgKDE1XzAwMF8wMDBfMDAwLCBkYXRlKDIwMjIsIDYsIDEpKSwKICAgICgyMF8wMDBfMDAwXzAwMCwgZGF0ZSgyMDIyLCAxMiwgMSkpLAogICAgKDU1XzAwMF8wMDBfMDAwLCBkYXRlKDIwMjMsIDYsIDEpKSwKICAgICg2NV8wMDBfMDAwXzAwMCwgZGF0ZSgyMDI0LCAzLCAxKSksCiAgICAoNzNfMDAwXzAwMF8wMDAsIGRhdGUoMjAyNCwgMTIsIDEpKSwKICAgICg3OF8wMDBfMDAwXzAwMCwgZGF0ZSgyMDI1LCAxMiwgMSkpLApdCgpkZWYgZXN0aW1hdGVfYWNjb3VudF9hZ2VfZGF5cyh1c2VyX2lkOiBpbnQpIC0+IHR1cGxlW2ludCwgc3RyXToKICAgICIiIlJldHVybiAoZXN0aW1hdGVkX2FnZV9pbl9kYXlzLCBjb25maWRlbmNlKSBmcm9tIHRoZSB1c2VyIElELgogICAgQ29uZmlkZW5jZSBpcyAnZXhhY3QtYW5jaG9yJywgJ2ludGVycG9sYXRlZCcgb3IgJ2V4dHJhcG9sYXRlZCcgKGJleW9uZCB0aGUKICAgIGxhc3QgYW5jaG9yIC0gdHJlYXQgd2l0aCBjYXJlIGFuZCByZWNhbGlicmF0ZSB0aGUgYW5jaG9ycykuIiIiCiAgICB0b2RheSA9IGRhdGV0aW1lLm5vdyh0aW1lem9uZS51dGMpLmRhdGUoKQogICAgaWYgdXNlcl9pZCA8PSAwOgogICAgICAgIHJldHVybiAxMF8wMDAsICJpbnRlcnBvbGF0ZWQiCiAgICBpZiB1c2VyX2lkIDw9IEFDQ09VTlRfQUdFX0FOQ0hPUlNbMF1bMF06CiAgICAgICAgcmV0dXJuICh0b2RheSAtIEFDQ09VTlRfQUdFX0FOQ0hPUlNbMF1bMV0pLmRheXMsICJpbnRlcnBvbGF0ZWQiCiAgICBmb3IgKGlkX2EsIGRfYSksIChpZF9iLCBkX2IpIGluIHppcChBQ0NPVU5UX0FHRV9BTkNIT1JTLCBBQ0NPVU5UX0FHRV9BTkNIT1JTWzE6XSk6CiAgICAgICAgaWYgaWRfYSA8PSB1c2VyX2lkIDw9IGlkX2I6CiAgICAgICAgICAgIGZyYWMgPSAodXNlcl9pZCAtIGlkX2EpIC8gKGlkX2IgLSBpZF9hKQogICAgICAgICAgICBlc3QgPSBkX2EgKyAoZF9iIC0gZF9hKSAqIGZyYWMKICAgICAgICAgICAgcmV0dXJuICh0b2RheSAtIGVzdCkuZGF5cywgImludGVycG9sYXRlZCIKICAgICMgYmV5b25kIHRoZSBsYXN0IGFuY2hvcjogZXh0cmFwb2xhdGUgd2l0aCB0aGUgc2xvcGUgb2YgdGhlIGxhc3Qgc2VnbWVudAogICAgKGlkX2EsIGRfYSksIChpZF9iLCBkX2IpID0gQUNDVPVudF9BR0VfQU5DSE9SU1stMl0sIEFDQ09VTlRfQUdFX0FOQ0hPUlNbLTFdCiAgICBpZHNfcGVyX2RheSA9IChpZF9iIC0gaWRfYSkgLyBtYXgoKGRfYiAtIGRfYSkuZGF5cywgMSkKICAgIGZyb20gZGF0ZXRpbWUgaW1wb3J0IHRpbWVkZWx0YQogICAgZXN0ID0gZF9iICsgdGltZWRlbHRhKGRheXM9KHVzZXJfaWQgLSBpZF9iKSAvIGlkc19wZXJfZGF5KQogICAgcmV0dXJuICh0b2RheSAtIGVzdCkuZGF5cywgImV4dHJhcG9sYXRlZCIKCiMgQ2hlYXAgdXNlcm5hbWUgc3BhbSBzaWduYWwgKHVzZWQgb25seSBhcyBhIHRpZWJyZWFrZXIsIG5ldmVyIGFzIHNvbGUgcmVhc29uKQpTUEFNTVlfVVNFUk5BTUVfUkUgPSByZS5jb21waWxlKHIiKGNhc2lub3xwcm9tb3xjcnlwdG98ZWFybnx3aGF0c2FwcHxjaGFubmVsfGFkbWluKSIsIHJlLkkpCgojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiMgU3RvcmFnZQojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgpkZWYgZGIoKSAtPiBzcWxpdGUzLkNvbm5lY3Rpb246CiAgICBjb25uID0gc3FsaXRlMy5jb25uZWN0KERCX1BBVEgpCiAgICBjb25uLnJvd19mYWN0b3J5ID0gc3FsaXRlMy5Sb3cKICAgIHJldHVybiBjb25uCgpkZWYgaW5pdF9kYigpIC0+IE5vbmU6CiAgICB3aXRoIGRiKCkgYXMgYzoKICAgICAgICBjLmV4ZWN1dGUoCiAgICAgICAgICAgICIiIkNSRUFURSBUQUJMRSBJRiBOT1QgRVhJU1RTIHVzZXJzICgKICAgICAgICAgICAgICAgIHVzZXJfaWQgSU5URUdFUiBQUklNQVJZIEtFWSwKICAgICAgICAgICAgICAgIHVzZXJuYW1lIFRFWFQsCiAgICAgICAgICAgICAgICBmaXJzdF9uYW1lIFRFWFQsCiAgICAgICAgICAgICAgICBmaXJzdF9zZWVuX2F0IElOVEVHRVIsCiAgICAgICAgICAgICAgICBtZXNzYWdlX2NvdW50IElOVEVHRVIgREVGQVVMVCAwLAogICAgICAgICAgICAgICAgc3RhdHVzIFRFWFQgREVGQVVMVCAnbmV3JywgICAgICAgICAgLS0gbmV3fHF1YXJhbnRpbmVkfGFwcHJvdmVkfGJhbm5lZAogICAgICAgICAgICAgICAgYXBwcm92ZWRfYXQgSU5URUdFUgogICAgICAgICAgICApIiIiCiAgICAgICAgKQogICAgICAgIGMuZXhlY3V0ZSgKICAgICAgICAgICAgIiIiQ1JFQVRFIFRBQkxFIElGIE5PVCBFWElTVFMgaGVsZF9tZXNzYWdlcyAoCiAgICAgICAgICAgICAgICBpZCBJTlRFR0VSIFBSSU1BUlkgS0VZIEFVVE9JTkNSRU1FTlQsCiAgICAgICAgICAgICAgICB1c2VyX2lkIElOVEVHRVIsCiAgICAgICAgICAgICAgICBjaGF0X2lkIElOVEVHRVIsCiAgICAgICAgICAgICAgICBtZXNzYWdlX2lkIElOVEVHRVIsCiAgICAgICAgICAgICAgICB0ZXh0IFRFWFQsCiAgICAgICAgICAgICAgICBjYXB0dXJlZF9hdCBJTlRFR0VSCiAgICAgICAgICAgICkiIiIKICAgICAgICApCiAgICAgICAgYy5leGVjdXRlKCJDUkVBVEUgVEFCTEUgSUYgTk9UIEVYSVNUUyBub3RpZnlfc3RhdGUgKHVzZXJfaWQgSU5URUdFUiBQUklNQVJZIEtFWSwgbGFzdF9ub3RpZnkgSU5URUdFUikiKQoKZGVmIGdldF91c2VyKHVzZXJfaWQ6IGludCkgLT4gc3FsaXRlMy5Sb3cgfCBOb25lOgogICAgd2l0aCBkYigpIGFzIGM6CiAgICAgICAgcmV0dXJuIGMuZXhlY3V0ZSgiU0VMRUNUICogRlJPTSB1c2VycyBXSEVSRSB1c2VyX2lkID0gPyIsICh1c2VyX2lkLCkpLmZldGNob25lKCkKCmRlZiB1cHNlcnRfdXNlcih1c2VyX2lkOiBpbnQsIHVzZXJuYW1lOiBzdHIgfCBOb25lLCBmaXJzdF9uYW1lOiBzdHIgfCBOb25lKSAtPiBzcWxpdGUzLlJvdzoKICAgIHdpdGggZGIoKSBhcyBjOgogICAgICAgIGMuZXhlY3V0ZSgKICAgICAgICAgICAgIiIiSU5TRVJUIElOVE8gdXNlcnMgKHVzZXJfaWQsIHVzZXJuYW1lLCBmaXJzdF9uYW1lLCBmaXJzdF9zZWVuX2F0KQogICAgICAgICAgICAgICBWQUxVRVMgKD8sID8sID8sID8pCiAgICAgICAgICAgICAgIE9OIENPTkZMSUNUKHVzZXJfaWQpIERPIFVQREFURSBTRVQKICAgICAgICAgICAgICAgICB1c2VybmFtZSA9IENPQUxFU0NFKGV4Y2x1ZGVkLnVzZXJuYW1lLCB1c2VybmFtZSksCiAgICAgICAgICAgICAgICAgZmlyc3RfbmFtZSA9IENPQUxFU0NFKGV4Y2x1ZGVkLmZpcnN0X25hbWUsIGZpcnN0X25hbWUpIiIiLAogICAgICAgICAgICAodXNlcl9pZCwgdXNlcm5hbWUsIGZpcnN0X25hbWUsIGludCh0aW1lLnRpbWUoKSkpLAogICAgICAgICkKICAgICAgICByZXR1cm4gYy5leGVjdXRlKCJTRUxFQ1QgKiBGUk9NIHVzZXJzIFdIRVJFIHVzZXJfaWQgPSA/IiwgKHVzZXJfaWQsKSkuZmV0Y2hvbmUoKQoKZGVmIHNldF9zdGF0dXModXNlcl9pZDogaW50LCBzdGF0dXM6IHN0cikgLT4gTm9uZToKICAgIHdpdGggZGIoKSBhcyBjOgogICAgICAgIGMuZXhlY3V0ZSgKICAgICAgICAgICAgIlVQREFURSB1c2VycyBTRVQgc3RhdHVzID0gPywgYXBwcm92ZWRfYXQgPSA/IFdIRVJFIHVzZXJfaWQgPSA/IiwKICAgICAgICAgICAgKHN0YXR1cywgaW50KHRpbWUudGltZSgpKSBpZiBzdGF0dXMgPT0gImFwcHJvdmVkIiBlbHNlIE5vbmUsIHVzZXJfaWQpLAogICAgICAgICkKCmRlZiBidW1wX21lc3NhZ2VfY291bnQodXNlcl9pZDogaW50KSAtPiBpbnQ6CiAgICB3aXRoIGRiKCkgYXMgYzoKICAgICAgICBjLmV4ZWN1dGUoIlVQREFURSB1c2VycyBTRVQgbWVzc2FnZV9jb3VudCA9IG1lc3NhZ2VfY291bnQgKyAxIFdIRVJFIHVzZXJfaWQgPSA/IiwgKHVzZXJfaWQsKSkKICAgICAgICByb3cgPSBjLmV4ZWN1dGUoIlNFTEVDVCBtZXNzYWdlX2NvdW50IEZST00gdXNlcnMgV0hFUkUgdXNlcl9pZCA9ID8iLCAodXNlcl9pZCwpKS5mZXRjaG9uZSgpCiAgICAgICAgcmV0dXJuIHJvd1sibWVzc2FnZV9jb3VudCJdIGlmIHJvdyBlbHNlIDAKCmRlZiBob2xkX21lc3NhZ2UodXNlcl9pZDogaW50LCBjaGF0X2lkOiBpbnQsIG1lc3NhZ2VfaWQ6IGludCwgdGV4dDogc3RyKSAtPiBOb25lOgogICAgd2l0aCBkYigpIGFzIGM6CiAgICAgICAgYy5leGVjdXRlKAogICAgICAgICAgICAiSU5TRVJUIElOVE8gaGVsZF9tZXNzYWdlcyAodXNlcl9pZCwgY2hhdF9pZCwgbWVzc2FnZV9pZCwgdGV4dCwgY2FwdHVyZWRfYXQpIFZBTFVFUyAoPywgPywgPywgPywgPykiLAogICAgICAgICAgICAodXNlcl9pZCwgY2hhdF9pZCwgbWVzc2FnZV9pZCwgdGV4dFs6MzUwMF0sIGludCh0aW1lLnRpbWUoKSkpLAogICAgICAgICkKCmRlZiBoZWxkX2Zvcih1c2VyX2lkOiBpbnQpIC0+IGxpc3Rbc3FsaXRlMy5Sb3ddOgogICAgd2l0aCBkYigpIGFzIGM6CiAgICAgICAgcmV0dXJuIGMuZXhlY3V0ZSgKICAgICAgICAgICAgIlNFTEVDVCAqIEZST00gaGVsZF9tZXNzYWdlcyBXSEVSRSB1c2VyX2lkID0gPyBPUkRFUiBCWSBpZCIsICh1c2VyX2lkLCkKICAgICAgICApLmZldGNoYWxsKCkKCmRlZiBjbGVhcl9oZWxkKHVzZXJfaWQ6IGludCkgLT4gTm9uZToKICAgIHdpdGggZGIoKSBhcyBjOgogICAgICAgIGMuZXhlY3V0ZSgiREVMRVRFIEZST00gaGVsZF9tZXNzYWdlcyBXSEVSRSB1c2VyX2lkID0gPyIsICh1c2VyX2lkLCkpCgpkZWYgc2hvdWxkX25vdGlmeSh1c2VyX2lkOiBpbnQpIC0+IGJvb2w6CiAgICBub3cgPSBpbnQodGltZS50aW1lKCkpCiAgICB3aXRoIGRiKCkgYXMgYzoKICAgICAgICByb3cgPSBjLmV4ZWN1dGUoIlNFTEVDVCBsYXN0X25vdGlmeSBGUk9NIG5vdGlmeV9zdGF0ZSBXSEVSRSB1c2VyX2lkID0gPyIsICh1c2VyX2lkLCkpLmZldGNob25lKCkKICAgICAgICBpZiByb3cgYW5kIG5vdyAtIHJvd1sibGFzdF9ub3RpZnkiXSA8IE5PVElGWV9DT09MRE9XTl9TRUM6CiAgICAgICAgICAgIHJldHVybiBGYWxzZQogICAgICAgIGMuZXhlY3V0ZSgKICAgICAgICAgICAgIklOU0VSVCBJTlRPIG5vdGlmeV9zdGF0ZSAodXNlcl9pZCwgbGFzdF9ub3RpZnkpIFZBTFVFUyAoPywgPykgIgogICAgICAgICAgICAiT04gQ09ORkxJQ1QodXNlcl9pZCkgRE8gVVBEQVRFIFNFVCBsYXN0X25vdGlmeSA9ID8iLAogICAgICAgICAgICAodXNlcl9pZCwgbm93LCBub3cpLAogICAgICAgICkKICAgICAgICByZXR1cm4gVHJ1ZQoKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQojIEhlbHBlcnMKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgpbbG9nLCBNVVRFX1BFUk1TLCBVTk1VVEVfUEVSTVMsIGRlc2NyaWJlX3VzZXIsIGFkbWluX2J1dHRvbnMsIGlzX2FkbWluLCBzYWZlX2RlbGV0ZSwgcXVhcmFudGluZSwgYXBwcm92ZV0KX0gPSBbXQ==
+"""Core module: config, account-age estimation, SQLite storage, helpers."""
+
+from __future__ import annotations
+
+import asyncio
+import logging
+import os
+import re
+import sqlite3
+import time
+from datetime import date, datetime, timezone
+
+from telegram import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.error import BadRequest, Forbidden, TelegramError
+from telegram.ext import (
+    Application,
+    CallbackQueryHandler,
+    CommandHandler,
+    ContextTypes,
+    MessageHandler,
+    filters,
+)
+
+# --------------------------------------------------------------------------
+# Config
+# --------------------------------------------------------------------------
+
+def _env(name: str, default: str = "") -> str:
+    return os.environ.get(name, default)
+
+def _env_bool(name: str, default: bool) -> bool:
+    v = os.environ.get(name)
+    if v is None:
+        return default
+    return v.strip().lower() not in ("0", "false", "no", "off")
+
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+
+BOT_TOKEN = _env("BOT_TOKEN")
+ADMIN_CHAT_ID = _env_int("ADMIN_CHAT_ID", 0)
+ADMIN_IDS = {int(x) for x in _env("ADMIN_IDS").replace(" ", "").split(",") if x}
+GROUP_ID = _env_int("GROUP_ID", 0)  # 0 = moderate every group the bot is in
+MIN_ACCOUNT_AGE_DAYS = _env_int("MIN_ACCOUNT_AGE_DAYS", 30)
+TRUST_AFTER_MESSAGES = _env_int("TRUST_AFTER_MESSAGES", 10)
+AUTO_PASS_OLD_ACCOUNTS = _env_bool("AUTO_PASS_OLD_ACCOUNTS", True)
+REPOST_HELD = _env_bool("REPOST_HELD", True)
+DB_PATH = _env("DB_PATH", "guard.db")
+
+NOTIFY_COOLDOWN_SEC = 600  # re-notify admins about the same quarantined user at most every 10 min
+
+if not BOT_TOKEN or not ADMIN_CHAT_ID:
+    raise SystemExit("BOT_TOKEN and ADMIN_CHAT_ID must be set (see .env.example).")
+
+# --------------------------------------------------------------------------
+# Account-age estimation from user ID
+# --------------------------------------------------------------------------
+# APPROXIMATE anchors: (user_id, approximate creation date).
+# Telegram IDs are issued roughly chronologically. These anchors are rough
+# public estimates - calibrate them for your group with /check on users whose
+# join date you actually know, then edit this table.
+ACCOUNT_AGE_ANCHORS: list[tuple[int, date]] = [
+    (100_000_000, date(2013, 5, 1)),
+    (500_000_000, date(2014, 10, 1)),
+    (1_000_000_000, date(2016, 3, 1)),
+    (2_000_000_000, date(2017, 11, 1)),
+    (5_000_000_000, date(2019, 10, 1)),
+    (7_500_000_000, date(2020, 10, 1)),
+    (10_000_000_000, date(2021, 6, 1)),
+    (15_000_000_000, date(2022, 6, 1)),
+    (20_000_000_000, date(2022, 12, 1)),
+    (55_000_000_000, date(2023, 6, 1)),
+    (65_000_000_000, date(2024, 3, 1)),
+    (73_000_000_000, date(2024, 12, 1)),
+    (78_000_000_000, date(2025, 12, 1)),
+]
+
+def estimate_account_age_days(user_id: int) -> tuple[int, str]:
+    """Return (estimated_age_in_days, confidence) from the user ID.
+    Confidence is 'exact-anchor', 'interpolated' or 'extrapolated' (beyond the
+    last anchor - treat with care and recalibrate the anchors)."""
+    today = datetime.now(timezone.utc).date()
+    if user_id <= 0:
+        return 10_000, "interpolated"
+    if user_id <= ACCOUNT_AGE_ANCHORS[0][0]:
+        return (today - ACCOUNT_AGE_ANCHORS[0][1]).days, "interpolated"
+    for (id_a, d_a), (id_b, d_b) in zip(ACCOUNT_AGE_ANCHORS, ACCOUNT_AGE_ANCHORS[1:]):
+        if id_a <= user_id <= id_b:
+            frac = (user_id - id_a) / (id_b - id_a)
+            est = d_a + (d_b - d_a) * frac
+            return (today - est).days, "interpolated"
+    # beyond the last anchor: extrapolate with the slope of the last segment
+    (id_a, d_a), (id_b, d_b) = ACCOUNT_AGE_ANCHORS[-2], ACCOUNT_AGE_ANCHORS[-1]
+    ids_per_day = (id_b - id_a) / max((d_b - d_a).days, 1)
+    from datetime import timedelta
+    est = d_b + timedelta(days=(user_id - id_b) / ids_per_day)
+    return (today - est).days, "extrapolated"
+
+# Cheap username spam signal (used only as a tiebreaker, never as sole reason)
+SPAMMY_USERNAME_RE = re.compile(r"(casino|promo|crypto|earn|whatsapp|channel|admin)", re.I)
+
+# --------------------------------------------------------------------------
+# Storage
+# --------------------------------------------------------------------------
+
+def db() -> sqlite3.Connection:
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db() -> None:
+    with db() as c:
+        c.execute(
+            """CREATE TABLE IF NOT EXISTS users (
+                user_id INTEGER PRIMARY KEY,
+                username TEXT,
+                first_name TEXT,
+                first_seen_at INTEGER,
+                message_count INTEGER DEFAULT 0,
+                status TEXT DEFAULT 'new',          -- new|quarantined|approved|banned
+                approved_at INTEGER
+            )"""
+        )
+        c.execute(
+            """CREATE TABLE IF NOT EXISTS held_messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                chat_id INTEGER,
+                message_id INTEGER,
+                text TEXT,
+                captured_at INTEGER
+            )"""
+        )
+        c.execute("CREATE TABLE IF NOT EXISTS notify_state (user_id INTEGER PRIMARY KEY, last_notify INTEGER)")
+
+def get_user(user_id: int) -> sqlite3.Row | None:
+    with db() as c:
+        return c.execute("SELECT * FROM users WHERE user_id = ?", (user_id,)).fetchone()
+
+def upsert_user(user_id: int, username: str | None, first_name: str | None) -> sqlite3.Row:
+    with db() as c:
+        c.execute(
+            """INSERT INTO users (user_id, username, first_name, first_seen_at)
+               VALUES (?, ?, ?, ?)
+               ON CONFLICT(user_id) DO UPDATE SET
+                 username = COALESCE(excluded.username, username),
+                 first_name = COALESCE(excluded.first_name, first_name)""",
+            (user_id, username, first_name, int(time.time())),
+        )
+        return c.execute("SELECT * FROM users WHERE user_id = ?", (user_id,)).fetchone()
+
+def set_status(user_id: int, status: str) -> None:
+    with db() as c:
+        c.execute(
+            "UPDATE users SET status = ?, approved_at = ? WHERE user_id = ?",
+            (status, int(time.time()) if status == "approved" else None, user_id),
+        )
+
+def bump_message_count(user_id: int) -> int:
+    with db() as c:
+        c.execute("UPDATE users SET message_count = message_count + 1 WHERE user_id = ?", (user_id,))
+        row = c.execute("SELECT message_count FROM users WHERE user_id = ?", (user_id,)).fetchone()
+        return row["message_count"] if row else 0
+
+def hold_message(user_id: int, chat_id: int, message_id: int, text: str) -> None:
+    with db() as c:
+        c.execute(
+            "INSERT INTO held_messages (user_id, chat_id, message_id, text, captured_at) VALUES (?, ?, ?, ?, ?)",
+            (user_id, chat_id, message_id, text[:3500], int(time.time())),
+        )
+
+def held_for(user_id: int) -> list[sqlite3.Row]:
+    with db() as c:
+        return c.execute(
+            "SELECT * FROM held_messages WHERE user_id = ? ORDER BY id", (user_id,)
+        ).fetchall()
+
+def clear_held(user_id: int) -> None:
+    with db() as c:
+        c.execute("DELETE FROM held_messages WHERE user_id = ?", (user_id,))
+
+def should_notify(user_id: int) -> bool:
+    now = int(time.time())
+    with db() as c:
+        row = c.execute("SELECT last_notify FROM notify_state WHERE user_id = ?", (user_id,)).fetchone()
+        if row and now - row["last_notify"] < NOTIFY_COOLDOWN_SEC:
+            return False
+        c.execute(
+            "INSERT INTO notify_state (user_id, last_notify) VALUES (?, ?) "
+            "ON CONFLICT(user_id) DO UPDATE SET last_notify = ?",
+            (user_id, now, now),
+        )
+        return True
+
+# --------------------------------------------------------------------------
+# Helpers
+# --------------------------------------------------------------------------
+
+log = logging.getLogger("guard")
+
+MUTE_PERMS = ChatPermissions.no_permissions()
+UNMUTE_PERMS = ChatPermissions.all_permissions()
+
+def describe_user(u) -> str:
+    uname = f"@{u.username}" if u.username else "no username"
+    return f"[{u.first_name or 'User'}](tg://user?id={u.id}) `{uname}` `{u.id}`"
+
+def admin_buttons(user_id: int, chat_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("Approve", callback_data=f"act:approve:{user_id}:{chat_id}"),
+            InlineKeyboardButton("Mute", callback_data=f"act:mute:{user_id}:{chat_id}"),
+            InlineKeyboardButton("Ban", callback_data=f"act:ban:{user_id}:{chat_id}"),
+        ]
+    ])
+
+def is_admin(update: Update) -> bool:
+    """Commands: allowed from configured ADMIN_IDS, or from anyone in the admin chat."""
+    if not update.effective_user:
+        return False
+    if update.effective_user.id in ADMIN_IDS:
+        return True
+    return update.effective_chat is not None and update.effective_chat.id == ADMIN_CHAT_ID
+
+async def safe_delete(message) -> bool:
+    try:
+        await message.delete()
+        return True
+    except (BadRequest, Forbidden, TelegramError) as e:
+        log.debug("could not delete message: %s", e)
+        return False
+
+# --------------------------------------------------------------------------
+# Core decision logic
+# --------------------------------------------------------------------------
+
+def classify_new_user(user) -> tuple[str, int, str, bool]:
+    """Returns (status, est_age_days, confidence, looks_spammy) for a joining user."""
+    est_days, confidence = estimate_account_age_days(user.id)
+    looks_spammy = bool(user.username and SPAMMY_USERNAME_RE.search(user.username))
+    if AUTO_PASS_OLD_ACCOUNTS and est_days >= MIN_ACCOUNT_AGE_DAYS and not looks_spammy:
+        return "approved", est_days, confidence, looks_spammy
+    return "quarantined", est_days, confidence, looks_spammy
+
+async def quarantine(user, chat, context, reason: str, est_days: int = 0, confidence: str = "") -> None:
+    """Mute a user, record status, notify admins with action buttons."""
+    row = upsert_user(user.id, user.username, user.first_name)
+    if row["status"] in ("approved", "banned"):
+        return
+    set_status(user.id, "quarantined")
+    try:
+        await context.bot.restrict_chat_member(chat.id, user.id, permissions=MUTE_PERMS)
+    except TelegramError as e:
+        log.warning("mute failed for %s: %s (is the bot admin?)", user.id, e)
+    if should_notify(user.id):
+        held = held_for(user.id)
+        text = (
+            f"QUARANTINED {describe_user(user)}\n"
+            f"Reason: {reason}\n"
+            f"Estimated account age: ~{est_days} days ({confidence})\n"
+            + (f"Held messages so far: {len(held)}\n" if held else "")
+            + "Bio check: run bio_guard.py alongside this bot for bio scanning."
+        )
+        try:
+            await context.bot.send_message(
+                ADMIN_CHAT_ID, text,
+                reply_markup=admin_buttons(user.id, chat.id),
+                disable_web_page_preview=True,
+            )
+        except TelegramError as e:
+            log.error("admin notify failed: %s", e)
+
+async def approve(user_id: int, chat_id: int, context, approver=None) -> str:
+    set_status(user_id, "approved")
+    try:
+        await context.bot.restrict_chat_member(chat_id, user_id, permissions=UNMUTE_PERMS)
+    except TelegramError as e:
+        log.warning("unmute failed for %s: %s", user_id, e)
+    reposted = 0
+    if REPOST_HELD:
+        for m in held_for(user_id):
+            try:
+                await context.bot.send_message(
+                    m["chat_id"],
+                    f"Quarantined message from `{m['user_id']}` (approved):\n\n{m['text']}",
+                )
+                reposted += 1
+            except TelegramError as e:
+                log.warning("repost failed: %s", e)
+        clear_held(user_id)
+    who = f" by {approver}" if approver else ""
+    return f"Approved user {user_id}{who}. Unmuted, {reposted} held message(s) re-posted."
