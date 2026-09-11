@@ -1,1 +1,148 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiIKQmlvIEd1YXJkIC0gY29tcGFuaW9uIHVzZXJib3QgZm9yIHRoZSBOZXctTWVtYmVyIEd1YXJkIEJvdAo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CldIWSBUSElTIEVYSVNUUzogVGVsZWdyYW0ncyBCb3QgQVBJIGdpdmVzIGJvdHMgTk8gYWNjZXNzIHRvIHVzZXIgYmlvcy4KU3BhbS1iYW5uZWQgdXNlcnMgb2Z0ZW4gcmV0dXJuIHdpdGggYSBmcmVzaCBhY2NvdW50IGFuZCBwdXQgdGhlaXIgc3BhbSBsaW5rcwoodC5tZS8uLi4sIFVSTHMsIHByb21vIHRleHQpIGluIHRoZWlyIEJJTyBpbnN0ZWFkIG9mIGluIG1lc3NhZ2VzLiBUbyByZWFkCmJpb3MgeW91IG11c3QgcnVuIGEgTVRQcm90byB1c2VyIHNlc3Npb24gKHlvdXIgb3duIGFjY291bnQpIHZpYSBUZWxldGhvbi4KClRoaXMgc2NyaXB0OgoxLiBMb2dzIGludG8gWU9VUiBhY2NvdW50IChhIHNlc3Npb24gZmlsZSwgbm90IHlvdXIgcGFzc3dvcmQsIGFmdGVyIGZpcnN0IHJ1bikuCjIuIFdhdGNoZXMgdGhlIHRhcmdldCBncm91cCBmb3IgbmV3IG1lbWJlcnMuCjMuIFJlYWRzIGVhY2ggbmV3IG1lbWJlcidzIGJpby4KNC4gSWYgdGhlIGJpbyBjb250YWlucyBsaW5rcyAvIHNwYW0ga2V5d29yZHMgLT4gY2FsbHMgdGhlIEd1YXJkIEJvdCdzIEFQSSB0bwogICBNVVRFIHRoZW0gaW1tZWRpYXRlbHkgYW5kIG5vdGlmaWVzIHRoZSBhZG1pbiBjaGF0IGZvciByZXZpZXcuCgpZb3VyIGFjY291bnQgb25seSBuZWVkcyB0byBiZSBhIE1FTUJFUiBvZiB0aGUgZ3JvdXAgKHRvIHNlZSBqb2lucyBhbmQgYmlvcyk7CnRoZSBtdXRpbmcgaXMgcGVyZm9ybWVkIGJ5IHRoZSBCT1QsIHdoaWNoIG11c3QgYmUgYW4gYWRtaW4uCgpTZXR1cCAoZW52IHZhcnMgLyAuZW52IC0gc2hhcmVkIHdpdGggdGhlIG1haW4gYm90KQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tR1VBUkRfQk9UX1RPS0VOICAgdGhlIEBCb3RGYXRoZXIgdG9rZW4gb2YgdGhlIGd1YXJkIGJvdCAodXNlZCB0byBtdXRlL25vdGlmeSkKQURNSU5fQ0hBVF9JRCAgICB3aGVyZSBub3RpZmljYXRpb25zIGdvCkdST1VQX0lEICAgICAgICAgIHRoZSBncm91cCB0byB3YXRjaCAocmVxdWlyZWQgaGVyZSkKQklPX1NQQU1fUEFUVEVSTlMgb3B0aW9uYWwgZXh0cmEgcmVnZXhlcywgY29tbWEtc2VwYXJhdGVkIChkZWZhdWx0OiBhbnkgVVJMIG9yIHQubWUgbGluaykKVEVMRVRIT05fQVBJX0lEIC8gVEVMRVRIT05fQVBJX0hBU0ggIGZyb20gaHR0cHM6Ly9teS50ZWxlZ3JhbS5vcmcKU0VTU0lPTl9OQU1FICAgICAgKGRlZmF1bHQgYmlvX2d1YXJkX3Nlc3Npb24pIHNlc3Npb24gZmlsZSBuYW1lIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXN5bmNpbwppbXBvcnQgbG9nZ2luZwppbXBvcnQgb3MKaW1wb3J0IHJlCmltcG9ydCB1cmxsaWIucmVxdWVzdAppbXBvcnQgdXJsbGliLnBhcnNlCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lem9uZQoKZnJvbSB0ZWxldGhvbiBpbXBvcnQgVGVsZWdyYW1DbGllbnQsIGV2ZW50cwpmcm9tIHRlbGV0aG9uLnRsLmZ1bmN0aW9ucy51c2VycyBpbXBvcnQgR2V0RnVsbFVzZXJSZXF1ZXN0CgojIC0tLS0gY29uZmlnIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgpCT1RfVE9LRU4gPSBvcy5lbnZpcm9uLmdldCgiR1VBUkRfQk9UX1RPS0VOIikgb3Igb3MuZW52aXJvbi5nZXQoIkJPVF9UT0tFTiIsICIiKQpBRE1JTl9DSEFUX0lEID0gaW50KG9zLmVudmlyb24uZ2V0KCJBRE1JTl9DSEFUX0lEIiwgIjAiKSBvciAwKQpHUk9VUF9JRCA9IGludChvcy5lbnZpcm9uLmdldCgiR1JPVVBfSUQiLCAiMCIpIG9yIDApCkFQSV9JRCA9IGludChvcy5lbnZpcm9uLmdldCgiVEVMRVRIT05fQVBJX0lEIiwgIjAiKSBvciAwKQpBUElfSEFTSCA9IG9zLmVudmlyb24uZ2V0KCJURUxFVEhPTl9BUElfSEFTSCIsICIiKQpTRVNTSU9OX05BTUUgPSBvcy5lbnZpcm9uLmdldCgiU0VTU0lPTl9OQU1FIiwgImJpb19ndWFyZF9zZXNzaW9uIikKTE9HX0FMTF9KT0lOUyA9IG9zLmVudmlyb24uZ2V0KCJMT0dfQUxMX0pPSU5TIiwgIjAiKSA9PSAiMSIKCkRFRkFVTFRfUEFUVEVSTlMgPSBbCiAgICByImh0dHBzPzovIiwgICAgICAgICAgIyBhbnkgVVJMCiAgICByInRcLm1lL1xTKyIsICAgICAgICAgICMgYW55IHRlbGVncmFtIGxpbmsgKGNoYW5uZWxzLCBpbnZpdGVzLCBETSBsaW5rcykKICAgIHIidGVsZWdyYW1cLm1lL1xTKyIsCiAgICByIig/aSlcYihjYXNpbm98cHJvbW98ZWFybnxwcm9maXR8c2lnbmFsc3x3aGF0c2FwcHxkcnVnfHdlZWR8a3VzaHxsb2FuKVxiIiwKXQKRVhUUkEgPSBbcCBmb3IgcCBpbiBvcy5lbnZpcm9uLmdldCgiQklPX1NQQU1fUEFUVEVSTlMiLCAiIikuc3BsaXQoInwiKSBpZiBwXQpQQVRURVJOUyA9IFtyZS5jb21waWxlKHApIGZvciBwIGluIERFRkFVTFRfUEFUVEVSTlMgKyBFWFRSQV0KCmlmIG5vdCAoQk9UX1RPS0VOIGFuZCBBRE1JTl9DSEFUX0lEIGFuZCBHUk9VUF9JRCBhbmQgQVBJX0lEIGFuZCBBUElfSEFTSCk6CiAgICByYWlzZSBTeXN0ZW1FaXQoCiAgICAgICAgIlNldCBHVUFSRF9CT1RfVE9LRU4gKG9yIEJPVF9UT0tFTiksIEFETUlOX0NIQVRfSUQsIEdST1VQX0lELCAiCiAgICAgICAgIlRFTEVUSE9OX0FQSV9JRCwgVEVMRVRIT05fQVBJX0hBU0ggLSBzZWUgLmVudi5leGFtcGxlIgogICAgKQoKbG9nID0gbG9nZ2luZy5nZXRMb2dnZXIoImJpb19ndWFyZCIpCgojIC0tLS0gQm90IEFQSSBoZWxwZXIgKG11dGUgKyBub3RpZnkgdmlhIHRoZSBndWFyZCBib3QpIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgpkZWYgYm90X2FwaShtZXRob2Q6IHN0ciwgKipwYXJhbXMpIC0+IGRpY3Q6CiAgICB1cmwgPSBmImh0dHBzOi8vYXBpLnRlbGVncmFtLm9yZy9ib3R7Qk9UX1RPS0VOfS97bWV0aG9kfT8/IiArIHVybGxpYi5wYXJzZS51cmxlbmNvZGUoCiAgICAgICAge3s6IHYgZm9yIGssIHYgaW4gcGFyYW1zLml0ZW1zKCkgaWYgdiBpcyBub3QgTm9uZX0KICAgICkKICAgIHdpdGggdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmwsIHRpbWVvdXQ9MTUpIGFzIHJlc3A6CiAgICAgICAgaW1wb3J0IGpzb24KICAgICAgICByZXR1cm4ganNvbi5sb2FkcyhyZXNwLnJlYWQoKSkKOkVNUFRZX1BFUk1TID0gJ3siY2FuX3NlbmRfbWVzc2FnZXMiOmZhbHNlLCJjYW5fc2VuZF9vdGhlcl9tZXNzYWdlcyI6ZmFsc2UsImNhbl9hZGRfd2ViX3BhZ2VfcHJldmlld3MiOmZhbHNlLCJjYW5fc2VuZF9wb2xscyI6ZmFsc2V9JwoKZGVmIG1hdGNoZXNfc3BhbShiaW86IHN0ciB8IE5vbmUpIC0+IGxpc3Rbc3RyXToKICAgIGlmIG5vdCBiaW86CiAgICAgICAgcmV0dXJuIFtdCiAgICBoaXRzID0gW10KICAgIGZvciByeCBpbiBQQVRURVJOUzoKICAgICAgICBtID0gcnguc2VhcmNoKGJpbykKICAgICAgICBpZiBtOgogICAgICAgICAgICBoaXRzLmFwcGVuZChtLmdyb3VwKDApWzo2MF0pCiAgICByZXR1cm4gaGl0cwojIC0tLS0gbWFpbiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgphc3luYyBkZWYgbWFpbigpIC0+IE5vbmU6CiAgICBjbGllbnQgPSBUZWxlZ3JhbUNsaWVudChTRVNTSU9OX05BTUUsIEFQSV9JRCwgQVBJX0hBU0gpCiAgICBhd2FpdCBjbGllbnQuc3RhcnQoKSAgIyBmaXJzdCBydW4gYXNrcyBmb3IgcGhvbmUgKyBjb2RlLCB0aGVuIHNhdmVzIHRoZSBzZXNzaW9uCiAgICBtZSA9IGF3YWl0IGNsaWVudC5nZXRfbWUoKQogICAgbG9nLmluZm8oIkJpbyBndWFyZCBydW5uaW5nIGFzICVzIiwgbWUudXNlcm5hbWUgb3IgbWUuaWQpCgogICAgZW50aXR5ID0gYXdhaXQgY2xpZW50LmdldF9lbnRpdHkoR1JPVVBfSUQpCgogICAgQGNsaWVudC5vbihldmVudHMuQ2hhdEFjdGlvbikKICAgIGFzeW5jIGRlZiBvbl9qb2luKGV2ZW50KToKICAgICAgICBpZiBldmVudC5jaGF0X2lkICE9IGVudGl0eS5pZDoKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgdXNlcnMgPSBbXQogICAgICAgIGlmIGV2ZW50LnVzZXJfam9pbmVkOgogICAgICAgICAgICB1c2VycyA9IFthd2FpdCBldmVudC5nZXRfdXNlcigpXQogICAgICAgIGVsaWYgZXZlbnQudXNlcl9hZGRlZDoKICAgICAgICAgICAgYWRkZWQgPSBhd2FpdCBldmVudC5nZXRfdXNlcnMoKQogICAgICAgICAgICB1c2VycyA9IGFkZGVkIGlmIGFkZGVkIGVsc2UgW10KICAgICAgICBmb3IgdXNlciBpbiB1c2VyczoKICAgICAgICAgICAgaWYgbm90IHVzZXIgb3IgZ2V0YXR0cih1c2VyLCAiYm90IiwgRmFsc2UpOgogICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgZnVsbCA9IGF3YWl0IGNsaWVudChHZXRGdWxsVXNlclJlcXVlc3QodXNlci5pZCkpCiAgICAgICAgICAgICAgICBiaW8gPSBmdWxsLmZ1bGxfdXNlci5hYm91dAogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgICAgICBsb2cud2FybmluZygiY291bGQgbm90IGZldGNoIGJpbyBmb3IgJXM6ICVzIiwgdXNlci5pZCwgZSkKICAgICAgICAgICAgICAgIGJpbyA9IE5vbmUKICAgICAgICAgICAgdW5hbWUgPSBmIkB7dXNlci51c2VybmFtZX0iIGlmIHVzZXIudXNlcm5hbWUgZWxzZSAibm8gdXNlcm5hbWUiCiAgICAgICAgICAgIGlmIExPR19BTExfSk9JTlM6CiAgICAgICAgICAgICAgICBib3RfYXBpKCJzZW5kTWVzc2FnZSIsIGNoYXRfaWQ9QURNSU5fQ0hBVF9JRCwKICAgICAgICAgICAgICAgICAgICAgICAgdGV4dD1mIkpvaW46IHt1c2VyLmZpcnN0X25hbWV9IHt1bmFtZX0gYHt1c2VyLmlkfWBcbkJpbzoge2JpbyBvciAnKGVtcHR5KSd9IikKICAgICAgICAgICAgaGl0cyA9IG1hdGNoZXNfc3BhbShiaW8pCiAgICAgICAgICAgIGlmIGhpdHM6CiAgICAgICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICAgICAgYm90X2FwaSgicmVzdHJpY3RDaGF0TWVtYmVyIiwgY2hhdF9pZD1lbnRpdHkuaWQsIHVzZXJfaWQ9dXNlci5pZCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBlcm1pc3Npb25zPUVNUFRZX1BFUk1TKQogICAgICAgICAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgICAgICAgICAgICAgIGxvZy5lcnJvcigibXV0ZSB2aWEgYm90IGZhaWxlZCAoYm90IGFkbWluPyk6ICVzIiwgZSkKICAgICAgICAgICAgICAgIGJvdF9hcGkoCiAgICAgICAgICAgICAgICAgICAgICAgICAic2VuZE1lc3NhZ2UiLCBjaGF0X2lkPUFETUlOX0NIQVRfSUQsCiAgICAgICAgICAgICAgICAgICAgICAgICB0ZXh0PSgKICAgICAgICAgICAgICAgICAgICAgICAgICAgZiJTUEFNIEJJTyBERVRFQ1RFRFxuIgogICAgICAgICAgICAgICAgICAgICAgICAgIGYiVXNlcjoge3VzZXIuZmlyc3RfbmFtZX0ge3VuYW1lfSBge3VzZXIuaWR9YFxuIgogICAgICAgICAgICAgICAgICAgICAgICAgIGZiIkJpbzoge3diaW8gb3IgJycpWzMwMF19XG4iCiAgICAgICAgICAgICAgICAgICAgICAgICBmIk1hdGNoZWQ6IHsnLCAnLmpvaW4oaGl0cyl9XG4iCiAgICAgICAgICAgICAgICAgICAgICAgICBmIkFscmVhZHkgbXV0ZWQuIFJldmlldywgdGhlbiAvYXBwcm92ZSB7dXNlci5pZH0gb3IgL2JhbiB7dXNlci5pZH0gaW4gdGhlIGd1YXJkIGJvdC4iCiAgICAgICAgICAgICAgICAgICAgKSwKICAgICAgICAgICAgICAgICkKCiAgICBsb2cuaW5mbygiV2F0Y2hpbmcgZ3JvdXAgJXMgZm9yIGpvaW5zLi4uIiwgZW50aXR5LmlkKQogICAgYXdhaXQgY2xpZW50LnJ1bl91bnRpbF9kaXNjb25uZWN0ZWQoKQoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIGxvZ2dpbmcuYmFzaWNDb25maWcoZm9ybWF0PSIlKGFzY3RpbWUpcyAlKGxldmVsbmFtZSlzICUobmFtZSlzOiAlKG1lc3NhZ2UpcyIsIGxldmVsPWxvZ2dpbmcuSU5GTykKICAgIGFzeW5jaW8ucnVuKG1haW4oKSkK
+#!/usr/bin/env python3
+"""
+Bio Guard - companion userbot for the New-Member Guard Bot
+==========================================================
+WHY THIS EXISTS: Telegram's Bot API gives bots NO access to user bios.
+Spam-banned users often return with a fresh account and put their spam links
+(t.me/..., URLs, promo text) in their BIO instead of in messages. To read
+bios you must run a MTProto user session (your own account) via Telethon.
+
+This script:
+1. Logs into YOUR account (a session file, not your password, after first run).
+2. Watches the target group for new members.
+3. Reads each new member's bio.
+4. If the bio contains links / spam keywords -> calls the Guard Bot's API to
+   MUTE them immediately and notifies the admin chat for review.
+
+Your account only needs to be a MEMBER of the group (to see joins and bios);
+the muting is performed by the BOT, which must be an admin.
+
+Setup (env vars / .env - shared with the main bot)
+--------------------------------------------------
+GUARD_BOT_TOKEN   the @BotFather token of the guard bot (used to mute/notify)
+ADMIN_CHAT_ID     where notifications go
+GROUP_ID          the group to watch (required here)
+BIO_SPAM_PATTERNS optional extra regexes, comma-separated (default: any URL or t.me link)
+TELETHON_API_ID / TELETHON_API_HASH  from https://my.telegram.org
+SESSION_NAME      (default bio_guard_session) session file name
+"""
+
+from __future__ import annotations
+
+import asyncio
+import logging
+import os
+import re
+import urllib.request
+import urllib.parse
+from datetime import datetime, timezone
+
+from telethon import TelegramClient, events
+from telethon.tl.functions.users import GetFullUserRequest
+
+# ---- config ---------------------------------------------------------------
+
+BOT_TOKEN = os.environ.get("GUARD_BOT_TOKEN") or os.environ.get("BOT_TOKEN", "")
+ADMIN_CHAT_ID = int(os.environ.get("ADMIN_CHAT_ID", "0") or 0)
+GROUP_ID = int(os.environ.get("GROUP_ID", "0") or 0)
+API_ID = int(os.environ.get("TELETHON_API_ID", "0") or 0)
+API_HASH = os.environ.get("TELETHON_API_HASH", "")
+SESSION_NAME = os.environ.get("SESSION_NAME", "bio_guard_session")
+LOG_ALL_JOINS = os.environ.get("LOG_ALL_JOINS", "0") == "1"
+
+DEFAULT_PATTERNS = [
+    r"https?://",          # any URL
+    r"t\.me/\S+",          # any telegram link (channels, invites, DM links)
+    r"telegram\.me/\S+",
+    r"(?i)\b(casino|promo|earn|profit|signals|whatsapp|drug|weed|kush|loan)\b",
+]
+EXTRA = [p for p in os.environ.get("BIO_SPAM_PATTERNS", "").split("|") if p]
+PATTERNS = [re.compile(p) for p in DEFAULT_PATTERNS + EXTRA]
+
+if not (BOT_TOKEN and ADMIN_CHAT_ID and GROUP_ID and API_ID and API_HASH):
+    raise SystemExit(
+        "Set GUARD_BOT_TOKEN (or BOT_TOKEN), ADMIN_CHAT_ID, GROUP_ID, "
+        "TELETHON_API_ID, TELETHON_API_HASH - see .env.example"
+    )
+
+log = logging.getLogger("bio_guard")
+
+# ---- Bot API helper (mute + notify via the guard bot) ----------------------
+
+def bot_api(method: str, **params) -> dict:
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/{method}?" + urllib.parse.urlencode(
+        {k: v for k, v in params.items() if v is not None}
+    )
+    with urllib.request.urlopen(url, timeout=15) as resp:
+        import json
+        return json.loads(resp.read())
+
+EMPTY_PERMS = '{"can_send_messages":false,"can_send_other_messages":false,"can_add_web_page_previews":false,"can_send_polls":false}'
+
+def matches_spam(bio: str | None) -> list[str]:
+    if not bio:
+        return []
+    hits = []
+    for rx in PATTERNS:
+        m = rx.search(bio)
+        if m:
+            hits.append(m.group(0)[:60])
+    return hits
+
+# ---- main ------------------------------------------------------------------
+
+async def main() -> None:
+    client = TelegramClient(SESSION_NAME, API_ID, API_HASH)
+    await client.start()  # first run asks for phone + code, then saves the session
+    me = await client.get_me()
+    log.info("Bio guard running as %s", me.username or me.id)
+
+    entity = await client.get_entity(GROUP_ID)
+
+    @client.on(events.ChatAction)
+    async def on_join(event):
+        if event.chat_id != entity.id:
+            return
+        users = []
+        if event.user_joined:
+            users = [await event.get_user()]
+        elif event.user_added:
+            added = await event.get_users()
+            users = added if added else []
+        for user in users:
+            if not user or getattr(user, "bot", False):
+                continue
+            try:
+                full = await client(GetFullUserRequest(user.id))
+                bio = full.full_user.about
+            except Exception as e:
+                log.warning("could not fetch bio for %s: %s", user.id, e)
+                bio = None
+            uname = f"@{user.username}" if user.username else "no username"
+            if LOG_ALL_JOINS:
+                bot_api("sendMessage", chat_id=ADMIN_CHAT_ID,
+                        text=f"Join: {user.first_name} {uname} `{user.id}`\nBio: {bio or '(empty)'}")
+            hits = matches_spam(bio)
+            if hits:
+                try:
+                    bot_api("restrictChatMember", chat_id=entity.id, user_id=user.id,
+                            permissions=EMPTY_PERMS)
+                except Exception as e:
+                    log.error("mute via bot failed (bot admin?): %s", e)
+                bot_api(
+                    "sendMessage", chat_id=ADMIN_CHAT_ID,
+                    text=(
+                        f"SPAM BIO DETECTED\n"
+                        f"User: {user.first_name} {uname} `{user.id}`\n"
+                        f"Bio: {(bio or '')[:300]}\n"
+                        f"Matched: {', '.join(hits)}\n"
+                        f"Already muted. Review, then /approve {user.id} or /ban {user.id} in the guard bot."
+                    ),
+                )
+
+    log.info("Watching group %s for joins...", entity.id)
+    await client.run_until_disconnected()
+
+if __name__ == "__main__":
+    logging.basicConfig(format="%(asctime)s %(levelname)s %(name)s: %(message)s", level=logging.INFO)
+    asyncio.run(main())
